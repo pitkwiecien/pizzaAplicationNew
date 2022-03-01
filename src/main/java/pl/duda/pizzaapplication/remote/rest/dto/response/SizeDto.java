@@ -1,5 +1,7 @@
 package pl.duda.pizzaapplication.remote.rest.dto.response;
 
+import pl.duda.pizzaapplication.domain.model.SizeType;
+
 import java.math.BigDecimal;
 
 public class SizeDto {
