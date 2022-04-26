@@ -32,5 +32,51 @@ public class SizeEntity {
     @JoinColumn(name = "pizza_id", insertable = false, updatable = false)
     private PizzaEntity pizza;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSizeType() {
+        return sizeType;
+    }
+
+    public void setSizeType(String sizeType) {
+        this.sizeType = sizeType;
+    }
+
+    public BigDecimal getPriceBase() {
+        return priceBase;
+    }
+
+    public void setPriceBase(BigDecimal priceBase) {
+        this.priceBase = priceBase;
+    }
+
+    public Integer getPizzaId() {
+        return pizzaId;
+    }
+
+    public void setPizzaId(Integer pizzaId) {
+        this.pizzaId = pizzaId;
+    }
+
+    public Set<OrderSizeEntity> getOrderSizes() {
+        return orderSizes;
+    }
+
+    public void setOrderSizes(Set<OrderSizeEntity> orderSizes) {
+        this.orderSizes = orderSizes;
+    }
+
+    public PizzaEntity getPizza() {
+        return pizza;
+    }
+
+    public void setPizza(PizzaEntity pizza) {
+        this.pizza = pizza;
+    }
 }

@@ -12,6 +12,10 @@ public class PizzaDto{
 		this.name = name;
 		this.sizes = sizes;
 	}
+
+	public PizzaDto(){
+
+	}
 	
 	public Integer getId(){
 		return id;
