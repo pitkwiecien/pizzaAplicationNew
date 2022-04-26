@@ -1,6 +1,7 @@
 package pl.duda.pizzaapplication.remote.rest.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import pl.duda.pizzaapplication.domain.mapper.OrderMapper;
 import pl.duda.pizzaapplication.domain.model.OrderStatusType;
 
 import java.util.Date;
@@ -16,6 +17,8 @@ public class OrderStatusDto {
 
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date expectedAt;
+
+    public OrderStatusDto(){}
 
     public OrderStatusDto(Date createdAt, Date updatedAt, Date expectedAt){
         this.createdAt = createdAt;

@@ -3,6 +3,8 @@ package pl.duda.pizzaapplication.remote.rest.api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.duda.pizzaapplication.domain.model.OrderStatusType;
+import pl.duda.pizzaapplication.domain.service.AddOrderService;
+import pl.duda.pizzaapplication.domain.service.GetOrderService;
 import pl.duda.pizzaapplication.remote.rest.dto.request.AddOrderDto;
 import pl.duda.pizzaapplication.remote.rest.dto.request.UpdateOrderDto;
 import pl.duda.pizzaapplication.remote.rest.dto.response.OrderCollectionDto;
@@ -15,15 +17,25 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping(value = "/api/v1/orders", produces = APPLICATION_JSON_VALUE)
 
 public class OrderController {
+    private final AddOrderService addOrderService;
+    private final GetOrderService getOrderService;
+
+
+    public OrderController(AddOrderService addOrderService, GetOrderService getOrderService) {
+        this.addOrderService = addOrderService;
+        this.getOrderService = getOrderService;
+    }
+
     @PostMapping
     public ResponseEntity<TokenDto> addOrder(@RequestBody AddOrderDto addOrderDto){
-        //TokenDto tokenDto = addOrderService.addOrder(addOrderDto);
-        return ResponseEntity.ok(null);
+        TokenDto tokenDto = addOrderService.addOrder(addOrderDto);
+        return ResponseEntity.ok(tokenDto);
     }
 
     @GetMapping("/status/{token}")
     public ResponseEntity<OrderStatusDto> getStatus(@PathVariable("token")String token){
-        return ResponseEntity.ok(null);
+        OrderStatusDto orderStatusDto = getOrderService.getOrderStatus(token);
+        return ResponseEntity.ok(orderStatusDto);
     }
 
     @GetMapping
